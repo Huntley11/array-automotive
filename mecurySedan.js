@@ -3,7 +3,7 @@
 const VehicleModule = require("./vehicle").Vehicle
 
 //this shows how to call from this module...
-
+//extends the class Vehicle from Vehicle.js using the variable VehicleModule
 class Car extends VehicleModule {
     constructor(make, model, year, color, mileage) {
         super(make, model, year, color, mileage)
@@ -14,8 +14,9 @@ class Car extends VehicleModule {
         this.fuel = 10
         this.scheduleService = false
     }
-
+//tells me if there is not enough space in the car with the #of passengers
     loadPassenger(num) {
+        //takes # of passengers and compares it to # of maxPassengers
         if (this.passenger < this.maxPassengers) {
             if ((num + this.passenger) <= this.maxPassengers) {
                 this.passenger = num;
@@ -28,7 +29,7 @@ class Car extends VehicleModule {
             console.log(this.model + " " + this.make + " is full")
         }
     }
-
+//tells me if the car is going to start or not based on fuel
     start() {
         if (this.fuel > 0) {            
             console.log("engine has started.")
@@ -38,7 +39,7 @@ class Car extends VehicleModule {
             return this.started == false
         }
     }
-
+//tells me if the car needs to be serviced
     checkService() {
         if (this.mileage > 30000) {            
             this.scheduleService = true
@@ -46,7 +47,7 @@ class Car extends VehicleModule {
         }
     }
 }
-
+//defining my "New Car"
 let newCar = new Car("Mecury", "Sedan", "1965", "color", "mileage")
 console.log(newCar.make)
 
